@@ -15,10 +15,16 @@ seedDB      = require("./seeds");
 var commentRoutes       = require("./routes/comments"),
     campgroundRoutes    = require("./routes/campgrounds"),
     indexRoutes         = require("./routes/index");
+    
 
-//mongoose.connect("mongodb://localhost/yelp_camp");
-mongoose.connect("mongodb://Lewis:Fandango38@ds163701.mlab.com:63701/yelpcamp");
-// mongodb://Lewis:Fandango38@ds163701.mlab.com:63701/yelpcamp
+
+//Connection to mlab database
+//mongoose.connect("mongodb://Lewis:Fandango38@ds163701.mlab.com:63701/yelpcamp");
+
+//Connection to local database
+mongoose.connect(process.env.DATABASEURL);
+
+
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
